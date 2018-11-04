@@ -5,8 +5,8 @@ from os.path import isfile, join
 from collections import Counter
 import bisect
 		
-mypath="cmr"
-onlyfiles = [f for f in listdir(mypath) if isfile(join(mypath, f))]
+CMRPath="cmr"
+onlyfiles = [f for f in listdir(CMRPath) if isfile(join(CMRPath, f))]
 
 allIDs_FileName 	= '_allIDs.txt';
 validIDs_FileName 	= '_validIDs.txt' ;
