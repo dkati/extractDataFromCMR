@@ -23,9 +23,9 @@ if os.path.exists(allIDsFileName):
 if os.path.exists(productName):
 	print('Product file deleted');
 	os.remove(productName);
-if os.path.exists(debug_alldata):
+if os.path.exists(debug__ALLDATA__):
 	print('DEBUG file of all data deleted');
-	os.remove(debug_alldata);
+	os.remove(debug__ALLDATA__);
 if os.path.exists(debug__validids__):
 	print('DEBUG file of all valid IDs deleted');
 	os.remove(debug__validids__);
