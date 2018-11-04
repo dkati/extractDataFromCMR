@@ -9,7 +9,7 @@ mypath="cmr"
 onlyfiles = [f for f in listdir(mypath) if isfile(join(mypath, f))]
 
 allIDs_FileName 	= '_allIDs.txt';
-allIDsFileName 		= '_validIDs.txt' ;
+validIDs_FileName 		= '_validIDs.txt' ;
 productName 		= '_product.txt';
 debug__ALLDATA__ 	= 'debug__ALLDATA__.txt';
 debug__validids__ 	= 'debug__VALIDIDS__.txt';
@@ -17,9 +17,9 @@ debug__validids__ 	= 'debug__VALIDIDS__.txt';
 if os.path.exists(allIDs_FileName):
 	print('results file deleted');
 	os.remove(allIDs_FileName);
-if os.path.exists(allIDsFileName):
+if os.path.exists(validIDs_FileName):
 	print('IDs file deleted');
-	os.remove(allIDsFileName);
+	os.remove(validIDs_FileName);
 if os.path.exists(productName):
 	print('Product file deleted');
 	os.remove(productName);
@@ -60,7 +60,7 @@ sortedResults.sort();
 
 
 c = Counter(sortedResults); # tailing the list
-with open (allIDsFileName,"a") as validIDs_:
+with open (validIDs_FileName,"a") as validIDs_:
 	for id in sortedResults:								
 		if c[id] == len(onlyfiles):										# If you find that ID , `len(onlyfiles)` times...
 			validIDs_.write(str(id)+"\n") 								# ...append it to the new file
@@ -68,7 +68,7 @@ with open (allIDsFileName,"a") as validIDs_:
 
 
 #Read the valid IDs now (reopening the fstream)
-with open (allIDsFileName) as validIDsAgain_:
+with open (validIDs_FileName) as validIDsAgain_:
 	__VALIDIDS__ = validIDsAgain_.readlines();
 
 if __debug__:
