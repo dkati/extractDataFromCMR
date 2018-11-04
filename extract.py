@@ -30,13 +30,12 @@ if os.path.exists(debug__validids__):
 	print('DEBUG file of all valid IDs deleted');
 	os.remove(debug__validids__);
 	
-hResults = open(allIDs_FileName, "a")
 
 print('Working...')
 
-# our big array
+hResults = open(allIDs_FileName, "a")
 ALLDATA__ 	= [];
-VALIDIDS__ 	= []; 													# mem prealloc
+VALIDIDS__ 	= []; 														# mem prealloc
 #grab all the ids
 for myfile in onlyfiles:
 	with open('cmr/'+ myfile) as f:
@@ -87,8 +86,9 @@ with open (product_FileName,"a") as product_:
 		for globalData in ALLDATA__:
 			gID = int(globalData[0])
 			gvalue = float(globalData[1])
-			print(str(gID) + "<--->" + str(validid))
-			print("Index of parsing ID:"+ str(index)+"/"+str(maxIDs))	# #PYTHONIZED
+			if __debug__:
+				print(str(gID) + "<--->" + str(validid))
+				print("Index of parsing ID:"+ str(index)+"/"+str(maxIDs))	# #PYTHONIZED
 			if gID == int(validid): 
 				values.append(gvalue)
 		myappend=str(int(validid))+","+str(values); 					# #PYTHONIZED
