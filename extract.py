@@ -1,10 +1,8 @@
-
 import os
 from os import listdir
 from os.path import isfile, join
 from collections import Counter
-import bisect
-		
+
 CMRPath="cmr"
 onlyfiles = [f for f in listdir(CMRPath) if isfile(join(CMRPath, f))]
 
