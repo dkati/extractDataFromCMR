@@ -9,8 +9,8 @@ mypath="cmr"
 onlyfiles = [f for f in listdir(mypath) if isfile(join(mypath, f))]
 
 allIDs_FileName 	= '_allIDs.txt';
-validIDs_FileName 		= '_validIDs.txt' ;
-productName 		= '_product.txt';
+validIDs_FileName 	= '_validIDs.txt' ;
+product_FileName 	= '_product.txt';
 debug__ALLDATA__ 	= 'debug__ALLDATA__.txt';
 debug__validids__ 	= 'debug__VALIDIDS__.txt';
 #Clean out first
@@ -20,9 +20,9 @@ if os.path.exists(allIDs_FileName):
 if os.path.exists(validIDs_FileName):
 	print('IDs file deleted');
 	os.remove(validIDs_FileName);
-if os.path.exists(productName):
+if os.path.exists(product_FileName):
 	print('Product file deleted');
-	os.remove(productName);
+	os.remove(product_FileName);
 if os.path.exists(debug__ALLDATA__):
 	print('DEBUG file of all data deleted');
 	os.remove(debug__ALLDATA__);
@@ -81,7 +81,7 @@ if __debug__:
 index=0;
 maxIDs = len(__VALIDIDS__)
 #Create the final product
-with open (productName,"a") as product_:
+with open (product_FileName,"a") as product_:
 	for validid in __VALIDIDS__:
 		values=[];
 		for globalData in __ALLDATA__:
