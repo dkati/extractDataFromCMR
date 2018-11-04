@@ -72,11 +72,10 @@ with open (allIDsFileName) as validIDsAgain_:
 	__VALIDIDS__ = validIDsAgain_.readlines();
 
 if __debug__:
-	#debug that shit
 	with open('debug__VALIDIDS__.txt','w') as f:
-    	f.writelines("%s\n" % item for item in __VALIDIDS__)
+   		f.writelines("%s\n" % item for item in __VALIDIDS__)
 	with open('debug__ALLDATA__.txt','w') as f:
-    	f.writelines("%s\n" % item for item in __ALLDATA__)
+   		f.writelines("%s\n" % item for item in __ALLDATA__)
 
 		
 index=0;
