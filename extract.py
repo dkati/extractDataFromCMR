@@ -8,15 +8,15 @@ import bisect
 mypath="cmr"
 onlyfiles = [f for f in listdir(mypath) if isfile(join(mypath, f))]
 
-resultsFileName 	= '_results.txt';
+allIDs_FileName 	= '_allIDs.txt';
 allIDsFileName 		= '_validIDs.txt' ;
 productName 		= '_product.txt';
 debug__ALLDATA__ 	= 'debug__ALLDATA__.txt';
 debug__validids__ 	= 'debug__VALIDIDS__.txt';
 #Clean out first
-if os.path.exists(resultsFileName):
+if os.path.exists(allIDs_FileName):
 	print('results file deleted');
-	os.remove(resultsFileName);
+	os.remove(allIDs_FileName);
 if os.path.exists(allIDsFileName):
 	print('IDs file deleted');
 	os.remove(allIDsFileName);
@@ -30,7 +30,7 @@ if os.path.exists(debug__validids__):
 	print('DEBUG file of all valid IDs deleted');
 	os.remove(debug__validids__);
 	
-hResults = open(resultsFileName, "a")
+hResults = open(allIDs_FileName, "a")
 
 print('Working...')
 
@@ -52,7 +52,7 @@ hResults.close()
 #Read the produced-all IDs and sort em 
 #in order to help Counter()
 sortedResults=[]; 														# mem prealloc
-with open(resultsFileName) as f:
+with open(allIDs_FileName) as f:
 	lines = f.readlines();
 for line in lines:
 	sortedResults.append( int (line) ) 									# an inline type casting is required here. #PYTHONIZED
