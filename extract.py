@@ -35,15 +35,15 @@ hResults = open(allIDs_FileName, "a")
 print('Working...')
 
 # our big array
-__ALLDATA__ 	= [];
-__VALIDIDS__ 	= []; 													# mem prealloc
+ALLDATA__ 	= [];
+VALIDIDS__ 	= []; 													# mem prealloc
 #grab all the ids
 for myfile in onlyfiles:
 	with open('cmr/'+ myfile) as f:
 		lines = f.readlines();
 		for line in lines:
 			id_,value_ = line.split(" ")
-			__ALLDATA__.append(											# hack into the string and remove the \n char
+			ALLDATA__.append(											# hack into the string and remove the \n char
 			[id_,float(value_.replace("\n",""))]
 			)	
 			hResults.write(id_+'\n')
@@ -69,22 +69,22 @@ with open (validIDs_FileName,"a") as validIDs_:
 
 #Read the valid IDs now (reopening the fstream)
 with open (validIDs_FileName) as validIDsAgain_:
-	__VALIDIDS__ = validIDsAgain_.readlines();
+	VALIDIDS__ = validIDsAgain_.readlines();
 
 if __debug__:
 	with open('debug__VALIDIDS__.txt','w') as f:
-   		f.writelines("%s\n" % item for item in __VALIDIDS__)
+   		f.writelines("%s\n" % item for item in VALIDIDS__)
 	with open('debug__ALLDATA__.txt','w') as f:
-   		f.writelines("%s\n" % item for item in __ALLDATA__)
+   		f.writelines("%s\n" % item for item in ALLDATA__)
 
 		
 index=0;
-maxIDs = len(__VALIDIDS__)
+maxIDs = len(VALIDIDS__)
 #Create the final product
 with open (product_FileName,"a") as product_:
-	for validid in __VALIDIDS__:
+	for validid in VALIDIDS__:
 		values=[];
-		for globalData in __ALLDATA__:
+		for globalData in ALLDATA__:
 			gID = int(globalData[0])
 			gvalue = float(globalData[1])
 			print(str(gID) + "<--->" + str(validid))
