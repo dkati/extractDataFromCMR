@@ -8,11 +8,11 @@ import bisect
 mypath="cmr"
 onlyfiles = [f for f in listdir(mypath) if isfile(join(mypath, f))]
 
-resultsFileName = '_results.txt';
-allIDsFileName = '_validIDs.txt' ;
-productName = '_product.txt';
-debug_alldata = 'debug__ALLDATA__.txt';
-debug__validids__ = 'debug__VALIDIDS__.txt';
+resultsFileName 	= '_results.txt';
+allIDsFileName 		= '_validIDs.txt' ;
+productName 		= '_product.txt';
+debug__ALLDATA__ 	= 'debug__ALLDATA__.txt';
+debug__validids__ 	= 'debug__VALIDIDS__.txt';
 #Clean out first
 if os.path.exists(resultsFileName):
 	print('results file deleted');
@@ -35,14 +35,15 @@ hResults = open(resultsFileName, "a")
 print('Working...')
 
 # our big array
-__ALLDATA__ = []; 								#mem alloc
+__ALLDATA__ 	= [];
+__VALIDIDS__ 	= []; 													# mem prealloc
 #grab all the ids
 for myfile in onlyfiles:
 	with open('cmr/'+ myfile) as f:
 		lines = f.readlines();
 		for line in lines:
 			id_,value_ = line.split(" ")
-			__ALLDATA__.append(					#hack into the string and remove the \n char
+			__ALLDATA__.append(											# hack into the string and remove the \n char
 			[id_,float(value_.replace("\n",""))]
 			)	
 			hResults.write(id_+'\n')
@@ -50,26 +51,23 @@ hResults.close()
 
 #Read the produced-all IDs and sort em 
 #in order to help Counter()
-sortedResults=[]; 								#mem alloc
+sortedResults=[]; 														# mem prealloc
 with open(resultsFileName) as f:
 	lines = f.readlines();
 for line in lines:
-	sortedResults.append( int (line) ) 			# an inline type casting is required here. PYTHONIZED
+	sortedResults.append( int (line) ) 									# an inline type casting is required here. #PYTHONIZED
 sortedResults.sort(); 
 
 
 c = Counter(sortedResults); # tailing the list
-#print (c)
 with open (allIDsFileName,"a") as validIDs_:
-	for id in sortedResults:
-		#If you find that ID , len(onlyfiles) times...
-		if c[id] == len(onlyfiles):
-			validIDs_.write(str(id)+"\n") 		# ...append it to the new file
-			del c[id] 							# ...and remove it from the queue
+	for id in sortedResults:								
+		if c[id] == len(onlyfiles):										# If you find that ID , `len(onlyfiles)` times...
+			validIDs_.write(str(id)+"\n") 								# ...append it to the new file
+			del c[id] 													# ...and remove it from the queue
 
 
 #Read the valid IDs now (reopening the fstream)
-__VALIDIDS__ = [] 								#mem alloc
 with open (allIDsFileName) as validIDsAgain_:
 	__VALIDIDS__ = validIDsAgain_.readlines();
 
@@ -91,13 +89,12 @@ with open (productName,"a") as product_:
 			gID = int(globalData[0])
 			gvalue = float(globalData[1])
 			print(str(gID) + "<--->" + str(validid))
-			print("Index of parsing ID:"+ str(index)+"/"+str(maxIDs))#pythonized
+			print("Index of parsing ID:"+ str(index)+"/"+str(maxIDs))	# #PYTHONIZED
 			if gID == int(validid): 
 				values.append(gvalue)
-		myappend=str(int(validid))+","+str(values); #pythonized
+		myappend=str(int(validid))+","+str(values); 					# #PYTHONIZED
 		product_.write(myappend);
 		print('...')
-		#exit(0)
 		index+=1
 
 
