@@ -53,7 +53,7 @@ with open(allIDs_FileName) as f:
 	lines = f.readlines();
 for line in lines:
 	sortedResults.append( int (line) ) 				# an inline type casting is required here. #PYTHONIZED
-sortedResults.sort(); 
+#sortedResults.sort(); 
 
 
 c = Counter(sortedResults); # tailing the list
@@ -95,7 +95,7 @@ with open (product_FileName,"a") as product_:
 
 			if gID == int(validid): 
 				values.append(gvalue)
-				myindex += 10000;
+				myindex += 14000;
 				smartIndex+=1;
 			else:
 				myindex+=1;
@@ -112,6 +112,7 @@ with open (product_FileName,"a") as product_:
 			print('Error on an ID')
 			exit(0)
 		product_.write(myappend+'\n');
+		index+=1;
 		#print('...')
 
 
