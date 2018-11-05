@@ -95,7 +95,7 @@ with open (product_FileName,"a") as product_:
 
 			if gID == int(validid): 
 				values.append(gvalue)
-				myindex += 100;
+				myindex += 10000;
 				smartIndex+=1;
 			else:
 				myindex+=1;
