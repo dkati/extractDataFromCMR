@@ -90,7 +90,7 @@ with open (product_FileName,"a") as product_:
 			if gID == int(validid): 
 				values.append(gvalue)
 		myappend=str(int(validid))+","+str(values); 					
-		product_.write(myappend);
+		product_.write(myappend+'\n');
 		print('...')
 		index+=1
 
