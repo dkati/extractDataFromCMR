@@ -1,18 +1,24 @@
 import os 
 from os import listdir
 from os.path import isfile, join
+from shutil import copyfile
 
 CMRPath="cmr"
 
-if os.path.exists('inputProduct/cleanAndLabeled.txt'):
+if os.path.exists('labelizeOUT/cleanAndLabeled.txt'):
+	print('Clean product file deleted');
+	os.remove('labelizeOUT/cleanAndLabeled.txt');
+
+if os.path.exists('labelizeOUT/_product.txt'):
 	print('Product file deleted');
-	os.remove('inputProduct/cleanAndLabeled.txt');
+	os.remove('labelizeOUT/_product.txt');
+
 
 print('Grabbing _products.txt...')
+copyfile('_product.txt','labelizeOUT/_product.txt');
 
-hClean = open('inputProduct/cleanAndLabeled.txt', "a")
 
-
+hClean = open('labelizeOUT/cleanAndLabeled.txt', "a")
 print('Working...')
 onlyfiles = [f for f in listdir(CMRPath) if isfile(join(CMRPath, f))]
 dirs = str(onlyfiles);
@@ -22,7 +28,7 @@ dirs = dirs.replace("'","");
 
 hClean.write('IDs,'+str(dirs)+'\n');
 
-with open ('inputProduct/_product.txt') as finalProduct:
+with open ('labelizeOUT/_product.txt') as finalProduct:
 	lines = finalProduct.readlines();
 	for line in lines:
 		line=line.replace("[","");
