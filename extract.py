@@ -68,31 +68,52 @@ with open (validIDs_FileName,"a") as validIDs_:
 with open (validIDs_FileName) as validIDsAgain_:
 	VALIDIDS__ = validIDsAgain_.readlines();
 
-if __debug__:
-	with open(debug__validids__,'w') as f:
-   		f.writelines("%s\n" % item for item in VALIDIDS__)
-	with open(debug__alldata__,'w') as f:
-   		f.writelines("%s\n" % item for item in ALLDATA__)
+
+with open(debug__validids__,'w') as f:
+   	f.writelines("%s\n" % item for item in VALIDIDS__)
+with open(debug__alldata__,'w') as f:
+   	f.writelines("%s\n" % item for item in ALLDATA__)
 
 		
 index=0;
 maxIDs = len(VALIDIDS__)
+
+#max lines 893410
 #Create the final product
+smartIndex = 0;
+myindex = 0;
 with open (product_FileName,"a") as product_:
 	for validid in VALIDIDS__:
 		values=[];
-		for globalData in ALLDATA__:
-			gID = int(globalData[0])
-			gvalue = float(globalData[1])
-			if __debug__:
-				print(str(gID) + "<--->" + str(validid))
-				print("Index of parsing ID:"+ str(index)+"/"+str(maxIDs))	
+		myindex=0;
+		smartIndex=0;
+		print("Index of parsing ID:"+ str(index)+"/"+str(maxIDs))	
+		while myindex <= 893410:
+
+			gID = int(ALLDATA__[myindex][0])
+			gvalue = float(ALLDATA__[myindex][1])
+
 			if gID == int(validid): 
 				values.append(gvalue)
-		myappend=str(int(validid))+","+str(values); 					
+				myindex += 100;
+				smartIndex+=1;
+			else:
+				myindex+=1;
+
+			if smartIndex == 60:
+				myindex=893410+1;
+			
+
+		#integrity check
+		if len(values) == 60:
+			myappend=str(int(validid))+","+str(values); 		
+		else:
+			myappend='Error on ID:'+str(int(validid));		
 		product_.write(myappend+'\n');
 		print('...')
 		index+=1
+		if index == 3:
+			break;
 
 
 print('Done...')
