@@ -108,7 +108,9 @@ with open (product_FileName,"a") as product_:
 		if len(values) == 60:
 			myappend=str(int(validid))+","+str(values); 		
 		else:
-			myappend='Error on ID:'+str(int(validid));		
+			myappend='Error on ID:'+str(int(validid));
+			print('Error on an ID')
+			exit(0)
 		product_.write(myappend+'\n');
 		print('...')
 
