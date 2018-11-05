@@ -111,9 +111,6 @@ with open (product_FileName,"a") as product_:
 			myappend='Error on ID:'+str(int(validid));		
 		product_.write(myappend+'\n');
 		print('...')
-		index+=1
-		if index == 3:
-			break;
 
 
 print('Done...')
