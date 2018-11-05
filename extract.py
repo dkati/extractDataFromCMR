@@ -112,7 +112,7 @@ with open (product_FileName,"a") as product_:
 			print('Error on an ID')
 			exit(0)
 		product_.write(myappend+'\n');
-		print('...')
+		#print('...')
 
 
 print('Done...')
