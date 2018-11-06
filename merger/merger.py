@@ -33,6 +33,9 @@ facetLabel = facetsLines[0];
 del facetsLines[0] #remove facets labelling
 index=0;
 hMerged = open(mergedFilename,"a");
+label = productLabel + ","+facetLabel;
+label = label.replace("\n","");
+hMerged.write(label);
 for productLine in productLines:
 	for facetline in facetsLines:
 		if productLine.split(',',1)[0] == facetline.split(',',1)[0]:
