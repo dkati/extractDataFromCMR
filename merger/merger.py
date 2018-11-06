@@ -22,8 +22,9 @@ with open(facetsFilename,"r") as hFacets:
 with open(productCSVFilename,"r") as hProduct:
 	productLines = hProduct.readlines();
 	
+del productLines[0]; # Remove the labelling line
 validIDs=[];
 for line in productLines:
 	# Read the productLines, grab the ID and create an array with the valid IDS
 	validIDs.append(line.split(',',1)[0]);
-	
+
