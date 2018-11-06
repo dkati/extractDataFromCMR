@@ -35,7 +35,7 @@ index=0;
 hMerged = open(mergedFilename,"a");
 label = productLabel + ","+facetLabel;
 label = label.replace("\n","");
-hMerged.write(label);
+hMerged.write(label+"\n");
 for productLine in productLines:
 	for facetline in facetsLines:
 		if productLine.split(',',1)[0] == facetline.split(',',1)[0]:
