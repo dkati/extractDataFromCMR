@@ -2,7 +2,7 @@ import os
 from os.path import isfile,join
 facetsFileName 	= "facets.stl"
 facetsOutput	= "OUT/facetsOUT.csv"
-facetsClean 	= "OUT/facetsClean_.csv"
+
 if os.path.exists(facetsOutput):
 	print('Old indexes file deleted');
 	os.remove(facetsOutput);
