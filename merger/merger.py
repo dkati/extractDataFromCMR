@@ -29,6 +29,7 @@ for line in productLines:
 	# Read the productLines, grab the ID and create an array with the valid IDS
 	validIDs.append(line.split(',',1)[0]);
 
+facetLabel = facetsLines[0];
 del facetsLines[0] #remove facets labelling
 index=0;
 hMerged = open(mergedFilename,"a");
