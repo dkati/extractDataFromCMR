@@ -31,16 +31,18 @@ for line in productLines:
 
 facetLabel = facetsLines[0];
 del facetsLines[0] #remove facets labelling
+facetLabel = facetLabel.replace("facetID,","");
 index=0;
 hMerged = open(mergedFilename,"a");
 label = productLabel + ","+facetLabel;
 label = label.replace("\n","");
+
 hMerged.write(label+"\n");
 for productLine in productLines:
 	for facetline in facetsLines:
 		if productLine.split(',',1)[0] == facetline.split(',',1)[0]:
 			str_ = productLine +","+facetline
 			str_ = str_.replace("\n","");
-			str_ = str_.replace(productLine.split(',',1)[0]+",","");
+			str_ = str_.replace(","+productLine.split(',',1)[0],"");
 			hMerged.write( str_+"\n");
 hMerged.close();
