@@ -22,6 +22,7 @@ with open(facetsFilename,"r") as hFacets:
 with open(productCSVFilename,"r") as hProduct:
 	productLines = hProduct.readlines();
 	
+productLabel = productLines[0];
 del productLines[0]; # Remove the labelling line
 validIDs=[];
 for line in productLines:
