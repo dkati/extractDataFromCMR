@@ -15,6 +15,8 @@ if os.path.exists('labelizeOUT/_product.txt'):
 
 
 print('Grabbing _products.txt...')
+if not os.path.exists('labelizeOUT'):
+    os.makedirs('labelizeOUT')
 copyfile('_product.txt','labelizeOUT/_product.txt');
 
 
