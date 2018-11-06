@@ -1,6 +1,6 @@
 import os
 from os.path import isfile,join
-productFilename	="_product.txt";
+productFilename	="cleanAndLabeled.txt";
 facetsFilename	="facetsOUT.csv";
 mergedFilename	="OUT/merged.csv";
 productCSVFilename = "OUT/product.csv";
@@ -11,21 +11,10 @@ if os.path.exists(productCSVFilename):
 	print('Old product CSV file deleted');
 	os.remove(productCSVFilename);
 	
-hCSVproduct = open(productCSVFilename,"a");
-with open(productFilename,"r") as hProduct:
-	productLines = hProduct.readlines();
-	index=0;
-	#clean out the '[' and ']'...
-	for line in productLines:
-		productLines[index] = productLines[index].replace("[","");
-		productLines[index] = productLines[index].replace("]","");
-		index+=1;
-	#Convert to CSV and paste it to OUT folder
-	for line in productLines:
-		hCSVproduct.write(line);  
+copyfile(productFilename,productCSVFilename);
+
 with open(facetsFilename,"r") as hFacets:
 	facetsLines = hFacets.readlines();
-hCSVproduct.close(); #Close the stream
 
 # Read again the product CSV
 with open(productCSVFilename,"r") as hProduct:
