@@ -1,7 +1,7 @@
 import os
 from shutil import copyfile
-
 from os.path import isfile,join
+
 productFilename	="cleanAndLabeled.txt";
 facetsFilename	="facetsOUT.csv";
 mergedFilename	="OUT/merged.csv";
@@ -28,3 +28,4 @@ for line in productLines:
 	# Read the productLines, grab the ID and create an array with the valid IDS
 	validIDs.append(line.split(',',1)[0]);
 
+del facetsLines[0] #remove facets labelling
