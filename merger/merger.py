@@ -41,5 +41,6 @@ for productLine in productLines:
 		if productLine.split(',',1)[0] == facetline.split(',',1)[0]:
 			str_ = productLine +","+facetline
 			str_ = str_.replace("\n","");
+			str_ = str_.replace(productLine.split(',',1)[0]+",","");
 			hMerged.write( str_+"\n");
 hMerged.close();
