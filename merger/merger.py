@@ -1,4 +1,6 @@
 import os
+from shutil import copyfile
+
 from os.path import isfile,join
 productFilename	="cleanAndLabeled.txt";
 facetsFilename	="facetsOUT.csv";
