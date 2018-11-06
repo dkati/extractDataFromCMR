@@ -33,3 +33,6 @@ with open(productCSVFilename,"r") as hProduct:
 	
 validIDs=[];
 for line in productLines:
+	# Read the productLines, grab the ID and create an array with the valid IDS
+	validIDs.append(line.split(',',1)[0]);
+	
